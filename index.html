@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Content</title>
+    <style>
+        /* Adding styles */
+        .random-content1 {
+            position: fixed;
+            padding: 10px;
+        }
+        body {
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image:  url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/752f8b01-ab34-4f29-bd46-4c53ae61b869/dg1auld-f7b6d9c0-37cb-4ce4-b4d9-3696e657fe4e.jpg/v1/fill/w_1280,h_732,q_75,strp/mystical_rainforest_desktop_wallpaper_by_nebuladarling_dg1auld-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzMyIiwicGF0aCI6IlwvZlwvNzUyZjhiMDEtYWIzNC00ZjI5LWJkNDYtNGM1M2FlNjFiODY5XC9kZzFhdWxkLWY3YjZkOWMwLTM3Y2ItNGNlNC1iNGQ5LTM2OTZlNjU3ZmU0ZS5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.OX7J_rGs-ApekrgW7M6XZ4Wju4GfleYBPpVOax1FJXA");}
+        #point{
+            position: fixed;
+            padding: 10px;
+            color: #f449a4;
+            font-size:50px;
+
+        }
+        #q{
+            color: #750000;
+        }
+    </style>
+</head>
+<body>
+    <div text-align="center">
+        <pre>      <h1 id="point" text-align="center">                        Points :<span id="q">0</span></h1>
+        </pre></div>
+<script>
+ 
+    var contentOptions = ["button1", "button2"];
+    var count1=8000
+    var count2=8000
+    var points=0
+function showRandomContent() {
+    // Get a random index from the array
+    var randomIndex = Math.floor(Math.random() * contentOptions.length);
+
+    // Create a new div element
+    var newDiv = document.createElement("button");
+    newDiv.classList.add("random-content1");
+    var imgElement = document.createElement("img");
+        imgElement.src = "https://w7.pngwing.com/pngs/211/613/png-transparent-computer-mouse-rodent-rat-fancy-mouse-pest-mouse-mammal-animals-pet.png"; // Replace with the actual path to your image
+        imgElement.alt = "Mouse"; 
+        imgElement.height=50
+        imgElement.width=50
+    var imgElement2 = document.createElement("img");
+        imgElement2.src = "https://cdn.pixabay.com/photo/2022/03/23/02/48/cross-7086307_1280.png"; // Replace with the actual path to your image
+        imgElement2.alt = "Cross"; 
+        imgElement2.height=50
+        imgElement2.width=50
+
+        // Append the image to the button
+        if (contentOptions[randomIndex]=="button1"){
+        newDiv.appendChild(imgElement);
+        }
+        else{
+            newDiv.appendChild(imgElement2);
+        }
+        
+    newDiv.onclick=function() {
+        if (contentOptions[randomIndex]=="button1"){
+            points+=1
+            document.getElementById("q").innerHTML=points
+            newDiv.remove()
+            if (count1>=1000){
+                count1-=400;
+            setTimeout(function() {
+                newDiv.remove();
+            }, count1);}
+            else {
+                setTimeout(function() {
+                    newDiv.remove();
+                }, 1000);
+            }
+            
+        }
+        else{
+            points-=1
+            document.getElementById("q").innerHTML=points
+            newDiv.remove()
+        
+            if (count1>=1000){
+                count1-=400;
+            setTimeout(function() {
+                newDiv.remove();
+            }, count1);}
+            else {
+                setTimeout(function() {
+                    newDiv.remove();
+                }, 1000);
+            }
+        }
+    };
+    var coor=[1,-1,1,1,1,1,1,0,2,-2,-1,-1,-1,-1];
+    var coor2=[1,-1,0,2,-2,1,1,1,1,1,1,-1,-1,-1,-1];
+    x=Math.floor(Math.random() * window.innerHeight);
+    y= Math.floor(Math.random() * window.innerWidth) ;
+    // Set random positioning
+    
+   // var randomIndex = Math.floor(Math.random() * contentOptions.length);
+
+    newDiv.style.top = x + "px";
+    newDiv.style.left =y + "px";
+    var index1=Math.floor(Math.random() * coor.length);
+    var index2=Math.floor(Math.random() * coor2.length);
+    function indexchange(){
+        var index1=Math.floor(Math.random() * coor.length);
+        var index2=Math.floor(Math.random() * coor2.length);
+    }
+    setInterval(indexchange,20);
+    var interval = setInterval(function() {
+        // Update position
+        x += coor[index1]; // You can adjust the speed by changing this value
+        y += coor2[index2]
+
+        // Set new position
+        newDiv.style.top = x + 'px';
+        newDiv.style.left = y + 'px';
+
+        // Stop moving after reaching a certain position
+        if (x > window.innerWidth - element.offsetWidth || y > window.innerHeight - element.offsetHeight) {
+          clearInterval(interval);
+        }
+      }, 20);
+      setInterval(indexchange,50);
+      var interval=setInterval(function(){
+        var index1=Math.floor(Math.random() * coor.length);
+        var index2=Math.floor(Math.random() * coor2.length);
+    },70)
+    // Append the new div to the body
+    document.body.appendChild(newDiv);
+
+    // Remove the div after a certain duration (e.g., 5 seconds)
+    if (count1>=3000){
+        count1-=400;
+    setTimeout(function() {
+        newDiv.remove();
+    }, count1);}
+    else {
+        setTimeout(function() {
+            newDiv.remove();
+        }, 3000);
+    }
+}
+
+// Set interval to show random content every 5 seconds
+if (count2>=3000){
+    count2-=600;
+setInterval(showRandomContent, count2);}
+else{
+    setInterval(showRandomContent, 3000);
+}
+// JavaScript code
+var newContent = "This is the dynamically added content at the end.";
+
+// Create a new div element
+var newDiv1 = document.createElement("div1");
+
+
+// Append the new div to the body
+document.body.appendChild(newDiv);
+//newContent = newDiv.innerHTML;
+</script>
+
+</body>
+</html>
